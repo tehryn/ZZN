@@ -52,32 +52,27 @@
     Data ze sčítání lidu byla získána z databáze Census Bureau\footnote{http://www.census.gov/ftp/pub/DES/www/welcome.html}. Data extrahoval Berry Becker z databáze z roku 1994 a následně z nich pomocí sady podmínek vybral co nejvíce vypovýdající záznamy, mezi tyto podmínky patřilo například omezení na věk občana. Poprvé byla tyto data citována Ronem Kohavi v článku \textit{Scaling Up the Accuracy of Naive-Bayes Classifiers: a Decision-Tree Hybrid}.
     
     
-        Datová sada se skládá ze 2 částí - soubor \textbf{adult.names} obsahuje popis jednotlivých údajů a soubor \textbf{adult.data} obsahuje samotné údaje. Záznam o občanu se skládá z těchto údajů:
-        
-        \begin{itemize}
-                \item Věk
-                \item Pracovní třída
-                \item Finální hodnota
-                \item Dosažené vzdělání
-                \item Počet let studia
-                \item Rodinný stav
-                \item Zaměstnání
-                \item Role v rodině
-                \item Rasová příslušnost
-                \item Pohlaví
-                \item Kapitálový zisk
-                \item Kapitálová ztráta
-                \item Výše pracovního úvazku
-                \item Rodná země
-                \item Mzda
-            \end{itemize}
+        Datová sada se skládá ze 2 částí - soubor \textbf{adult.names} obsahuje popis jednotlivých údajů a soubor \textbf{adult.data} obsahuje samotné údaje.
     
     \section{Cíle projektu\label{cile}}
-        
-    %\begin{itemize}
-     %   \item Pokud chci vydělávat >50k, s jakým vzděláním a zaměstnáním mám největší šanci toho dosáhnout? Jak tuto skutečnost ovlivní rodina, rasa a pohlaví?
-     %   \item Mám vzdělání X, jemi Y let a pracuji Z hodin týdně. Jakou mám šanci, že budu vydělávát >50k ročně? Jak tuto pravděpodobnost ovlivní rodina, rasa a pohlaví?
-     %   \item Nejake dalsi napady?
+    
+    Tento projekt si klade za cíle prozkoumání zajímavých souvislostí mezi zázemím občana a jeho volbou povolání. Při určování zázemí občana budou brány v potaz tyto údaje obsažené v datové sadě:
+    
+    \begin{itemize}
+    	\item Věk
+		\item Dosažené vzdělání
+		\item Rodinný stav
+		\item Role v rodině
+		\item Rasová příslušnost
+		\item Pohlaví
+		\item Rodná země
+    \end{itemize}
+    
+    
+	Vliv na zvolené zaměstnání bude zkoumán ve dvou různých směrech:
+    \begin{itemize}
+        \item pracovní třída - občan pracuje pod zaměstnavatelem, ve státním sektoru, jako osoba samostatně výdělečně činná, ...
+        \item povolání - občan pracuje například jako prodejce, poskytuje služby, v zemědělství, ...
     \end{itemize}
     % \tableofcontents
 	% \newpage
