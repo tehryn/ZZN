@@ -1,15 +1,13 @@
 \documentclass[11pt,a4paper,titlepage]{article}
 \usepackage[left=1.5cm,text={18cm, 25cm},top=2.5cm]{geometry}
 \usepackage[utf8]{inputenc}
-%\usepackage{setspace}
 \usepackage{graphicx}
 \usepackage[czech]{babel}
 \usepackage{float}
 \usepackage{color}
 \usepackage{hyperref}
-% \bibliographystyle{czplain}
 \usepackage{etoolbox}
-% \apptocmd{\thebibliography}{\raggedright}{}{}
+
 \setlength{\parindent}{0cm}
 \setlength{\parskip}{1em}
 \sloppy
@@ -44,7 +42,7 @@
 	\setcounter{page}{1}
 
     \section{Úvod}
-        Cílem tohoto projektu je získání zajímavých souvislostí z vybrané datové sady. Pro tento 			účel byla použita data ze sčítání lidu.
+        Cílem tohoto projektu je získání zajímavých souvislostí z vybrané datové sady. Pro tento účel byla použita data ze sčítání lidu.
         
         Dolováním z této datové sady bude v rámci tohoto projektu zkoumán vliv zázemí občana na výběr jeho povolání. Vytyčené cíle tohoto projektu jsou blíže popsané v kapitole \ref{cile}.
     
@@ -73,12 +71,24 @@
         \item Pracovní třída - občan pracuje pod zaměstnavatelem, ve státním sektoru, jako osoba samostatně výdělečně činná, ...
         \item Povolání - občan pracuje například jako prodejce, poskytuje služby, v zemědělství, ...
     \end{itemize}
-    % \tableofcontents
-	% \newpage
-	% \newpage
-    % 
-    % \section{Úvod}
-	% \newpage
-	% \bibliography{zdroje}
 
+    \section{Předzpracování dat}
+        V části předzpracování byl největší důraz kladen na číštění a redukci dat. Tímto procesem lze dosáhnout kvalitnější analýzi dat v následujících krocích. 
+        
+        \subsection{Čištění dat}
+            Jak již bylo zmíněno v kapitole \ref{cile}, tento projekt je zaměřen na volbu povolání jednotlivých osob. Proto se v atributech týkajících se povolání (pracovní třída a povolání) doplňujeme chybějící hodnoty jejich predikcí. Predikce hodnot je prováděna za pomocí modelu, který byl vytrénovaný na použité datové sadě s použitím algoritmu k-NN.
+        
+        \subsection{Redukce dat}
+            Redukce je dosažena pomocí snížní počtu dimenzí v datové sadě. Dimenze je snížena díky jednoduchému odstranění nerelevantních atributů, jako je například
+            počet let studia či příjmy/výdaje z investic.
+    
+    \section{Získávání znalostí}
+        V této fázi projektu je množina dat rozdělena na trénovací a testovací sadu a to v poměru 7:3. Na základě trénovacích dat je vytvořen rozhodovací strom, který
+        na testovacích datech se snaží předpovídat pracovní třídu a povolání.
+
+
+    \section{Výsledky}
+        
+        
+    
 \end{document}
