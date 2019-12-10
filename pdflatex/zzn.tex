@@ -83,14 +83,14 @@
             počet let studia či příjmy/výdaje z investic.
     
     \section{Získávání znalostí}
-        V následující části projektu je množina dat rozdělena na trénovací a testovací sadu a to v poměru 7:3. Na jejichž základě je natrénovaný model, jehož přesnost je na zbývajích datech změřena. V rámci projektu bylo vyzkoušeno několik klasifikačních algoritmů, z níž některé pracují pouze s numerickými daty a proto bylo nutné pro samotnou klasifikaci použít operátor \textt{Nominal to Numerical}, kteý převede původní řetězcové hodnoty na numerické.
+        V následující části projektu je množina dat rozdělena na trénovací a testovací sadu a to v poměru 7:3. Na jejichž základě je natrénovaný model, jehož přesnost je na zbývajích datech změřena. V rámci projektu bylo vyzkoušeno několik klasifikačních algoritmů, z níž některé pracují pouze s numerickými daty a proto bylo nutné pro samotnou klasifikaci použít operátor \textit{Nominal to Numerical}, kteý převede původní řetězcové hodnoty na numerické.
 
         \subsection{Klasifikační metody}
             První použitou metodou byl \textit{Naivní Bayesovský klasifikátor}. Jedná se o algoritmus, který dosahuje dobrých výsledků i při trénování na malé množině dat. Na použité datové sadě dosáhl přesnosti pouze XX.XX \%.
             
             \begin{figure}[H]
                 \centering
-                \includegraphics{./img/presnost_bayes.png}
+                \includegraphics[width=1\textwidth]{./img/presnost_bayes.png}
                 \caption{Výsledek predikce za použití metody \textit{Naivního Bayovského klasifikátoru}}
             \end{figure}
 
@@ -98,7 +98,7 @@
             
             \begin{figure}[H]
                 \centering
-                \includegraphics{./img/presnost_tree.png}
+                \includegraphics[width=1\textwidth]{./img/presnost_tree.png}
                 \caption{Výsledek predikce za použití \textit{Rozhodovacího stromu}}
             \end{figure}
 
@@ -106,7 +106,7 @@
 
             \begin{figure}[H]
                 \centering
-                \includegraphics{./img/presnost_svm.png}
+                \includegraphics[width=1\textwidth]{./img/presnost_svm.png}
                 \caption{Výsledek predikce za použití \textit{Metody podpůrných vektorů}}
             \end{figure}
 
@@ -114,7 +114,7 @@
 
             \begin{figure}[H]
                 \centering
-                \includegraphics{./img/presnost_neural.png}
+                \includegraphics[width=1\textwidth]{./img/presnost_neural.png}
                 \caption{Výsledek predikce za použití metody Naivního Bayovského klasifikátoru}
             \end{figure}
 
