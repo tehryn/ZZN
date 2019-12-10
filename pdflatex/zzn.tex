@@ -25,7 +25,7 @@
 		%\setstretch{0.5}
 		\begin{center}
 
-			\includegraphics[width = 150mm]{logo.png}\\
+			\includegraphics[width = 150mm]{img/logo.png}\\
 
 			\vspace{\stretch{0.382}}
 
@@ -79,13 +79,44 @@
             Jak již bylo zmíněno v kapitole \ref{cile}, tento projekt je zaměřen na volbu povolání jednotlivých osob. Proto se v atributech týkajících se povolání (pracovní třída a povolání) doplňujeme chybějící hodnoty jejich predikcí. Predikce hodnot je prováděna za pomocí modelu, který byl vytrénovaný na použité datové sadě s použitím algoritmu k-NN.
         
         \subsection{Redukce dat}
-            Redukce je dosažena pomocí snížní počtu dimenzí v datové sadě. Dimenze je snížena díky jednoduchému odstranění nerelevantních atributů, jako je například
+            Redukce je dosažena pomocí snížení počtu dimenzí v datové sadě. Dimenze je snížena díky jednoduchému odstranění nerelevantních atributů, jako je například
             počet let studia či příjmy/výdaje z investic.
     
     \section{Získávání znalostí}
-        V této fázi projektu je množina dat rozdělena na trénovací a testovací sadu a to v poměru 7:3. Na základě trénovacích dat je vytvořen rozhodovací strom, který
-        na testovacích datech se snaží předpovídat pracovní třídu a povolání.
+        V následující části projektu je množina dat rozdělena na trénovací a testovací sadu a to v poměru 7:3. Na jejichž základě je natrénovaný model, jehož přesnost je na zbývajích datech změřena. V rámci projektu bylo vyzkoušeno několik klasifikačních algoritmů, z níž některé pracují pouze s numerickými daty a proto bylo nutné pro samotnou klasifikaci použít operátor \textt{Nominal to Numerical}, kteý převede původní řetězcové hodnoty na numerické.
 
+        \subsection{Klasifikační metody}
+            První použitou metodou byl \textit{Naivní Bayesovský klasifikátor}. Jedná se o algoritmus, který dosahuje dobrých výsledků i při trénování na malé množině dat. Na použité datové sadě dosáhl přesnosti pouze XX.XX \%.
+            
+            \begin{figure}[H]
+                \centering
+                \includegraphics{./img/presnost_bayes.png}
+                \caption{Výsledek predikce za použití metody \textit{Naivního Bayovského klasifikátoru}}
+            \end{figure}
+
+            Další použitou metodou byl \textit{Rozhodovací strom}. Jedná o algoritmus vhodný pro hledání skrytých závislostí v datech. Oproti předchozí metodě (\textit{Naivní Bayesovský klasifikátor}) bylo dosaženo nepatrného zlepšení. Výsledná přesnost tohoto modelu je XX.XX \%.
+            
+            \begin{figure}[H]
+                \centering
+                \includegraphics{./img/presnost_tree.png}
+                \caption{Výsledek predikce za použití \textit{Rozhodovacího stromu}}
+            \end{figure}
+
+            Zajímavých výsledků bylo dosaženo pomocí \textit{Metody podpůrných vektorů}. Jedná se o často používanou metodu pro klasifikaci a regresní analýzu, protože dosahuje dobrých výsledků pro široké spektrum učících problémů.
+
+            \begin{figure}[H]
+                \centering
+                \includegraphics{./img/presnost_svm.png}
+                \caption{Výsledek predikce za použití \textit{Metody podpůrných vektorů}}
+            \end{figure}
+
+            Z kategorie neuronových sítí byly použity metody \textit{Hluboké učení}, \textit{Neoronové sítě} a \textit{Perceprony}. Tyto metody dosáhly podobných výsledků jako rozhodovací strom a mezi sebou se liši v řádu desetin procent. Jejich přesnost se pohybovala okolo XX.XX \%.
+
+            \begin{figure}[H]
+                \centering
+                \includegraphics{./img/presnost_neural.png}
+                \caption{Výsledek predikce za použití metody Naivního Bayovského klasifikátoru}
+            \end{figure}
 
     \section{Výsledky}
         
