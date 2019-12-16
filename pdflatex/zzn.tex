@@ -44,16 +44,16 @@
     \section{Úvod}
         Cílem tohoto projektu je získání zajímavých souvislostí z vybrané datové sady. Pro tento účel byla použita data ze sčítání lidu.
         
-        Dolováním z této datové sady bude v rámci tohoto projektu zkoumán vliv zázemí občana na výběr jeho povolání. Vytyčené cíle tohoto projektu jsou blíže popsané v kapitole \ref{cile}.
+        Dolováním z této datové sady byl v rámci tohoto projektu zkoumán vliv zázemí občana na výběr jeho povolání. Vytyčené cíle tohoto projektu jsou blíže popsané v kapitole \ref{cile}.
     
     \section{Popis dat}
     Data ze sčítání lidu byla získána z databáze Census Bureau\footnote{http://www.census.gov/ftp/pub/DES/www/welcome.html}. Data extrahoval Berry Becker z databáze z roku 1994 a následně z nich pomocí sady podmínek (například omezení na věk občana)  vybral vypovýdající záznamy. Poprvé tyto data citoval Ron Kohavi v článku \textit{Scaling Up the Accuracy of Naive-Bayes Classifiers: a Decision-Tree Hybrid}.
     
         Datová sada se skládá ze 2 částí - soubor \textbf{adult.names} obsahuje popis jednotlivých údajů a soubor \textbf{adult.data} obsahuje samotná data.
     
-    \section{Cíle projektu\label{cile}}
+    \section{Návrh projektu\label{cile}}
     
-    Tento projekt si klade za cíle prozkoumání zajímavých souvislostí mezi zázemím občana a jeho volbou povolání. Při určování zázemí občana budou brány v potaz tyto údaje obsažené v datové sadě:
+    Tento projekt si klade za cíle prozkoumání zajímavých souvislostí mezi zázemím občana a jeho volbou povolání. Při určování zázemí občana byly brány v potaz tyto údaje obsažené v datové sadě:
     
     \begin{itemize}
     	\item Věk
@@ -66,14 +66,28 @@
     \end{itemize}
     
     
-	Vliv na zvolené zaměstnání bude zkoumán ve dvou různých směrech:
+	Vliv na zvolené zaměstnání byl zkoumán ve dvou různých směrech:
     \begin{itemize}
         \item Pracovní třída - občan pracuje pod zaměstnavatelem, ve státním sektoru, jako osoba samostatně výdělečně činná, ...
         \item Zaměření - občan pracuje například jako prodejce, poskytuje služby, v zemědělství, ...
     \end{itemize}
+    
+    Dolování dat bylo provedeno v programu rapidminer. Schéma procesu, který předzpracoval data a následně provedl provedl predixi lze viděť na obrázku \ref{proces}
+    \begin{figure}[H]
+        \label{proces}
+        \centering
+        \includegraphics[width=1\textwidth]{./img/process.png}
+        \caption{Výsledné schéma procesu v programu rapidminer}
+    \end{figure}
 
     \section{Předzpracování dat}
         V části předzpracování byl největší důraz kladen na číštění a redukci dat. Tímto procesem lze dosáhnout kvalitnější analýzy dat v následujících krocích. 
+        
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=1\textwidth]{./img/predzpracovani.png}
+            \caption{Schéma předzpracování v programu rapidminer}
+        \end{figure}
         
         \subsection{Čištění dat}
             Jak již bylo zmíněno v kapitole \ref{cile}, tento projekt je zaměřen na volbu povolání jednotlivých osob. Proto se v atributech týkajících se povolání (pracovní třída a zaměření) doplňujeme chybějící hodnoty jejich predikcí. Predikce hodnot je prováděna za pomocí modelu, který byl vytrénovaný na použité datové sadě s použitím algoritmu k-NN.
@@ -85,16 +99,22 @@
     \section{Získávání znalostí}
         V následující části projektu je množina dat rozdělena na trénovací a testovací sadu a to v poměru 7:3, na kterých je model nejprve natrénován a následně je změřena jeho přesnost. V rámci projektu bylo vyzkoušeno několik klasifikačních algoritmů, z níž některé pracují pouze s numerickými daty a proto bylo nutné pro samotnou klasifikaci použít operátor \textit{Nominal to Numerical}, kteý převede původní řetězcové hodnoty na číselné.
 
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=1\textwidth]{./img/zpracovani.png}
+            \caption{Schéma aplikace modelu v programu rapidminer}
+        \end{figure}
+
         \subsection{Klasifikační metody}
-            První použitou metodou byl \textit{Naivní Bayesovský klasifikátor}. Jedná se o algoritmus, který dosahuje dobrých výsledků i při trénování na malé množině dat. Na použité datové sadě dosáhl přesnosti pouze 5,45\,\%, což je velmi slabý výsledek ukazující, že použití tohoto modelu v rámci projektu není ideální.
+            První použitou metodou byl \textit{Naivní Bayesovský klasifikátor}. Jedná se o algoritmus, který dosahuje dobrých výsledků i při trénování na malé množině dat. Na použité datové sadě dosáhl přesnosti 72,93\,\%. Výsledek dokazuje existenci závislosti atributu \textbf{pracovní třídy} na atributech \textbf{věk, dosažené vzdělání, rodinný stav, role v rodině, rasová příslušnost, pohlaví a rodné země}.
             
             \begin{figure}[H]
                 \centering
-                \includegraphics[width=1\textwidth]{./img/presnost_bayes.png}
+                \includegraphics[width=1\textwidth]{./img/bayes_novy.png}
                 \caption{Výsledek predikce za použití metody \textit{Naivního Bayovského klasifikátoru}}
             \end{figure}
 
-            Další použitou metodou byl \textit{Rozhodovací strom}. Jedná o algoritmus vhodný pro hledání skrytých závislostí v datech. Oproti předchozí metodě (\textit{Naivní Bayesovský klasifikátor}) bylo dosaženo značného zlepšení. Výsledná přesnost tohoto modelu je 74,95\,\%. Výsledek dokazuje existenci závislosti atributu \textbf{pracovní třídy} na atributech \textbf{věk, dosažené vzdělání, rodinný stav, role v rodině, rasovéá příslušnost, pohlaví a rodné země}.
+            Další použitou metodou byl \textit{Rozhodovací strom}. Jedná o algoritmus vhodný pro hledání skrytých závislostí v datech. Oproti předchozí metodě (\textit{Naivní Bayesovský klasifikátor}) bylo dosaženo malého zlepšení. Výsledná přesnost tohoto modelu je 74,95\,\%.
             
             \begin{figure}[H]
                 \centering
@@ -110,7 +130,7 @@
                 \caption{Výsledek predikce za použití \textit{Metody podpůrných vektorů}}
             \end{figure}
 
-            Z kategorie neuronových sítí byly použity metody \textit{Hluboké učení}, \textit{Neuronové sítě} a \textit{Perceprony}. Tyto metody dosáhly prakticky stejných výsledků jako rozhodovací strom, rozdíly mezi nimi se pohybovaly v řádu desetin procent. Jejich přesnost se pohybovala okolo 76,50\,\%.
+            Z kategorie neuronových sítí byly použity metody \textit{Hluboké učení}, \textit{Neuronové sítě} a \textit{Perceprony}. Tyto metody dosáhly prakticky stejných výsledků jako rozhodovací strom, rozdíly mezi nimi se pohybovaly v řádu desetin procent. Jejich přesnost se pohybovala okolo 74,50\,\%.
 
             \begin{figure}[H]
                 \centering
@@ -119,7 +139,6 @@
             \end{figure}
 
     \section{Výsledky}
-        Pro atribut \textbf{pracovní třídy} bylo dosaženo nejlepších výsledků (přesnost přibližně 77\,\%) pomocí metod \textit{Rozhodovacího stromu} a \textit{Neuronových sítí}. Tyto metody byly následně použity i pro predixi atributu \textbf{zaměření}, kde byla dosažena přesnost 28,27\,\% pro metodu \textit{Rozhodovacího stromu} a XX.XX\,\% pro metodu \textit{Neuronové sítě}. Výsledné hodnoty potvrzují existenci souvislosti pracovní třídy osob na základě jejich věku, rasy, pohlaví, vzdělání, místa narození a rodiny. Nicméně v těchto atributech nebyla nalezená dostatečná datová závislost pro predikci samotného zaměření povolání.
-        
+        Pro atribut \textbf{pracovní třídy} bylo dosaženo nejlepších výsledků (přesnost přibližně 75\,\%) pomocí metod \textit{Rozhodovacího stromu} a \textit{Neuronových sítí}. Tyto metody byly následně použity i pro predixi atributu \textbf{zaměření}, kde byla dosažena přesnost 28,27\,\% pro metodu \textit{Rozhodovacího stromu} a 29,71\,\% pro metodu \textit{Neuronové sítě}. Výsledné hodnoty potvrzují existenci souvislosti pracovní třídy osob na základě jejich věku, rasy, pohlaví, vzdělání, místa narození a rodiny. Nicméně v těchto atributech nebyla nalezená dostatečná datová závislost pro predikci samotného zaměření povolání.
     
 \end{document}
