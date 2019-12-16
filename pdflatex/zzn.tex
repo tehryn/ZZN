@@ -69,21 +69,21 @@
 	Vliv na zvolené zaměstnání bude zkoumán ve dvou různých směrech:
     \begin{itemize}
         \item Pracovní třída - občan pracuje pod zaměstnavatelem, ve státním sektoru, jako osoba samostatně výdělečně činná, ...
-        \item Povolání - občan pracuje například jako prodejce, poskytuje služby, v zemědělství, ...
+        \item Zaměření - občan pracuje například jako prodejce, poskytuje služby, v zemědělství, ...
     \end{itemize}
 
     \section{Předzpracování dat}
-        V části předzpracování byl největší důraz kladen na číštění a redukci dat. Tímto procesem lze dosáhnout kvalitnější analýzi dat v následujících krocích. 
+        V části předzpracování byl největší důraz kladen na číštění a redukci dat. Tímto procesem lze dosáhnout kvalitnější analýzy dat v následujících krocích. 
         
         \subsection{Čištění dat}
-            Jak již bylo zmíněno v kapitole \ref{cile}, tento projekt je zaměřen na volbu povolání jednotlivých osob. Proto se v atributech týkajících se povolání (pracovní třída a povolání) doplňujeme chybějící hodnoty jejich predikcí. Predikce hodnot je prováděna za pomocí modelu, který byl vytrénovaný na použité datové sadě s použitím algoritmu k-NN.
+            Jak již bylo zmíněno v kapitole \ref{cile}, tento projekt je zaměřen na volbu povolání jednotlivých osob. Proto se v atributech týkajících se povolání (pracovní třída a zaměření) doplňujeme chybějící hodnoty jejich predikcí. Predikce hodnot je prováděna za pomocí modelu, který byl vytrénovaný na použité datové sadě s použitím algoritmu k-NN.
         
         \subsection{Redukce dat}
             Redukce je dosažena pomocí snížení počtu dimenzí v datové sadě. Dimenze je snížena díky jednoduchému odstranění nerelevantních atributů, jako je například
             počet let studia či příjmy/výdaje z investic.
     
     \section{Získávání znalostí}
-        V následující části projektu je množina dat rozdělena na trénovací a testovací sadu a to v poměru 7:3. Na jejichž základě je natrénovaný model, jehož přesnost je na zbývajích datech změřena. V rámci projektu bylo vyzkoušeno několik klasifikačních algoritmů, z níž některé pracují pouze s numerickými daty a proto bylo nutné pro samotnou klasifikaci použít operátor \textit{Nominal to Numerical}, kteý převede původní řetězcové hodnoty na numerické.
+        V následující části projektu je množina dat rozdělena na trénovací a testovací sadu a to v poměru 7:3, na kterých je model nejprve natrénován a následně je změřena jeho přesnost. V rámci projektu bylo vyzkoušeno několik klasifikačních algoritmů, z níž některé pracují pouze s numerickými daty a proto bylo nutné pro samotnou klasifikaci použít operátor \textit{Nominal to Numerical}, kteý převede původní řetězcové hodnoty na číselné.
 
         \subsection{Klasifikační metody}
             První použitou metodou byl \textit{Naivní Bayesovský klasifikátor}. Jedná se o algoritmus, který dosahuje dobrých výsledků i při trénování na malé množině dat. Na použité datové sadě dosáhl přesnosti pouze 5,45 \%, což je velmi slabý výsledek ukazující, že použití tohoto modelu v rámci projektu není ideální.
@@ -94,7 +94,7 @@
                 \caption{Výsledek predikce za použití metody \textit{Naivního Bayovského klasifikátoru}}
             \end{figure}
 
-            Další použitou metodou byl \textit{Rozhodovací strom}. Jedná o algoritmus vhodný pro hledání skrytých závislostí v datech. Oproti předchozí metodě (\textit{Naivní Bayesovský klasifikátor}) bylo dosaženo značného zlepšení. Výsledná přesnost tohoto modelu je 74,95 \%. Výsledek dokazuje existenci závislosti atributu \texttt{pracovní třídy} na atributech \texttt{věku, dosaženého vzdělání, rodinného stavu, roli v rodině, rasové příslušnosti, pohlaví a rodné země}.
+            Další použitou metodou byl \textit{Rozhodovací strom}. Jedná o algoritmus vhodný pro hledání skrytých závislostí v datech. Oproti předchozí metodě (\textit{Naivní Bayesovský klasifikátor}) bylo dosaženo značného zlepšení. Výsledná přesnost tohoto modelu je 74,95 \%. Výsledek dokazuje existenci závislosti atributu \textbf{pracovní třídy} na atributech \textbf{věk, dosažené vzdělání, rodinný stav, role v rodině, rasovéá příslušnost, pohlaví a rodné země}.
             
             \begin{figure}[H]
                 \centering
@@ -110,7 +110,7 @@
                 \caption{Výsledek predikce za použití \textit{Metody podpůrných vektorů}}
             \end{figure}
 
-            Z kategorie neuronových sítí byly použity metody \textit{Hluboké učení}, \textit{Neuronové sítě} a \textit{Perceprony}. Tyto metody dosáhly prakticky stejných výsledků jako rozhodovací strom a mezi sebou se liši v řádu desetin procent. Jejich přesnost se pohybovala okolo 76,50 \%.
+            Z kategorie neuronových sítí byly použity metody \textit{Hluboké učení}, \textit{Neuronové sítě} a \textit{Perceprony}. Tyto metody dosáhly prakticky stejných výsledků jako rozhodovací strom, rozdíly mezi nimi se pohybovaly v řádu desetin procent. Jejich přesnost se pohybovala okolo 76,50 \%.
 
             \begin{figure}[H]
                 \centering
@@ -119,7 +119,7 @@
             \end{figure}
 
     \section{Výsledky}
-        Pro atribut \texttt{pracovní třídy} bylo dosaženo nejlepších výsledků (přesnost přibližně 77 \%) pomocí metod \textit{Rozhodovacího stromu} a \textit{Neuronových sítí}. Tyto metody byly následně použity i pro predixi atributu \texttt{povolání}, kde bylo dosaženo přesnost 28.27 \% pro metodu \textit{Rozhodovacího stromu} a XX.XX \% pro metodu \textit{Neuronové sítě}. Výsledné hodnoty potvrzují existenci závislostí volby odvětví (pracovní třídy) osob na základě jejich věku, rasy, pohlaví, vzdělání, místa narození a rodiny. Nicméně tyto atributy jsou nedostatečné pro predixi samotného povolání.
+        Pro atribut \textbf{pracovní třídy} bylo dosaženo nejlepších výsledků (přesnost přibližně 77 \%) pomocí metod \textit{Rozhodovacího stromu} a \textit{Neuronových sítí}. Tyto metody byly následně použity i pro predixi atributu \texttt{povolání}, kde byla dosažena přesnost 28.27 \% pro metodu \textit{Rozhodovacího stromu} a XX.XX \% pro metodu \textit{Neuronové sítě}. Výsledné hodnoty potvrzují existenci souvislosti pracovní třídy osob na základě jejich věku, rasy, pohlaví, vzdělání, místa narození a rodiny. Nicméně v těchto atributech nebyla nalezená dostatečná datová závislost pro predikci samotného zaměření povolání.
         
     
 \end{document}
